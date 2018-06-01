@@ -1,0 +1,415 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf470
+{\fonttbl\f0\fnil\fcharset0 Calibri;\f1\fnil\fcharset0 Consolas;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue255;\red0\green128\blue0;\red163\green21\blue21;
+\red9\green136\blue90;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab708
+\pard\pardeftab708\ri-618\sl280\partightenfactor0
+
+\f0\fs22 \cf0 \
+\pard\pardeftab708\ri-618\sl285\partightenfactor0
+
+\f1\fs21 \cf2 abstract\cf0  \cf2 class\cf0  Person \{\
+    name: string;\
+\
+    \cf2 constructor\cf0 (name: string) \{\
+        \cf2 this\cf0 .name = name;\
+    \}\
+\}\
+\
+\cf2 const\cf0  person = \cf2 new\cf0  Person();\cf3 //Error\cf0 \
+\pard\pardeftab708\ri-618\sl280\partightenfactor0
+
+\f0\fs22 \cf0 \
+\
+\
+\pard\pardeftab708\ri-618\sl285\partightenfactor0
+
+\f1\fs21 \cf2 abstract\cf0  \cf2 class\cf0  Person \{\
+    name: string;\
+\
+    \cf2 constructor\cf0 (name: string) \{\
+        \cf2 this\cf0 .name = name;\
+    \}\
+\
+    \cf2 abstract\cf0  greeting(): string;\
+\}\
+\pard\pardeftab708\ri-618\sl280\partightenfactor0
+
+\f0\fs22 \cf0 \
+\
+\
+\pard\pardeftab708\ri-618\sl285\partightenfactor0
+
+\f1\fs21 \cf2 class\cf0  Employee \cf2 extends\cf0  Person \{\
+    role: string;\
+    \cf2 constructor\cf0 (name: string, role: string) \{\
+        \cf2 super\cf0 (name);\
+        \cf2 this\cf0 .role = role;\
+    \}\
+\
+    greeting(): string \{\
+        \cf2 return\cf0  \cf4 `Hello \cf2 $\{this\cf0 .name\cf2 \}\cf4 ! You're a Microsoft \cf2 $\{this\cf0 .role\cf2 \}\cf4 .`\cf0 ;\
+    \}\
+\}\
+\
+\cf2 const\cf0  employee: Person = \cf2 new\cf0  Employee(\cf4 "Sylvain"\cf0 , \cf4 "PFE"\cf0 );\
+console.log(employee.greeting());\cf3 //Hello Sylvain! You're a Microsoft PFE.\cf0 \
+\pard\pardeftab708\ri-618\sl280\partightenfactor0
+
+\f0\fs22 \cf0 \
+\
+\
+\pard\pardeftab708\ri-618\sl285\partightenfactor0
+
+\f1\fs21 \cf2 interface\cf0  Logger \{\
+    debug(message: string): void;\
+\}\
+\
+\cf2 class\cf0  ConsoleLogger \cf2 implements\cf0  Logger \{\
+    debug(message: string): void \{\
+        console.debug(message);\
+    \}\
+\}\
+\pard\pardeftab708\ri-618\sl280\partightenfactor0
+
+\f0\fs22 \cf0 \
+\
+\pard\pardeftab708\ri-618\sl285\partightenfactor0
+
+\f1\fs21 \cf2 interface\cf0  Person \{\
+    name: string;\
+\}\
+\
+\cf2 interface\cf0  Entity \{\
+    id: string;\
+\}\
+\
+\cf2 interface\cf0  Employee \cf2 extends\cf0  Person, Entity \{\
+    pin: number;\
+\}\
+\pard\pardeftab708\ri-618\sl280\partightenfactor0
+
+\f0\fs22 \cf0 \
+\
+\pard\pardeftab708\ri-618\sl285\partightenfactor0
+
+\f1\fs21 \cf2 const\cf0  duck = \{\
+    fly: () \cf2 =>\cf0  console.log(\cf4 "I can fly!"\cf0 ),\
+    swim: () \cf2 =>\cf0  console.log(\cf4 "I can swim!"\cf0 ), \
+    walk: () \cf2 =>\cf0  console.log(\cf4 "I can walk!"\cf0 ),\
+    feather: \cf2 true\cf0 \
+\};\
+\
+ \cf2 const\cf0  dog = \{\
+    swim: () \cf2 =>\cf0  console.log(\cf4 "I can swim!"\cf0 ),\
+    walk: () \cf2 =>\cf0  console.log(\cf4 "I can walk!"\cf0 ),\
+    fur: \cf2 true\cf0 \
+\};\
+\
+ \cf2 const\cf0  isDuck = \cf2 function\cf0 (obj) \{\
+    \cf2 return\cf0  obj.hasOwnProperty(\cf4 "feather"\cf0 ) \
+            && obj.fly \
+            && obj.swim\
+            && obj.walk;\
+\}\
+\
+\cf2 if\cf0 (isDuck(duck)) \{\
+    (duck).fly();\
+\}\
+\
+\cf2 if\cf0 (!isDuck(dog)) \{\
+    console.log(\cf4 "Not a Duck..."\cf0 )\
+\}\
+\
+\pard\pardeftab708\ri-618\sl280\partightenfactor0
+
+\f0\fs22 \cf0 \
+\
+\pard\pardeftab708\ri-618\sl285\partightenfactor0
+
+\f1\fs21 \cf2 interface\cf0  Employee \{\
+    name: string;\
+    role: string;\
+\}\
+\
+\cf2 function\cf0  greeting(employee: Employee): string \{\
+    \cf2 return\cf0  \cf4 `Hello \cf2 $\{\cf0 employee.name\cf2 \}\cf4 ! You're a Microsoft \cf2 $\{\cf0 employee.role\cf2 \}\cf4 .`\cf0 ;\
+\}\
+\
+\cf2 const\cf0  employee = \{\
+    name: \cf4 "Sylvain"\cf0 , \
+    role: \cf4 "PFE"\cf0 \
+\};\
+console.log(greeting(employee));\cf3 //Hello Sylvain! You're a Microsoft PFE.\cf0 \
+\pard\pardeftab708\ri-618\sl280\partightenfactor0
+
+\f0\fs22 \cf0 \
+\
+\
+\pard\pardeftab708\ri-618\sl285\partightenfactor0
+
+\f1\fs21 \cf2 interface\cf0  Employee \{\
+    name: string;\
+    age?: number;\
+\}\
+\
+\cf2 function\cf0  greeting(employee: Employee): string \{\
+    \cf2 return\cf0  \cf4 `Hello \cf2 $\{\cf0 employee.name\cf2 \}\cf4 ! \cf2 $\{\cf0 \
+        employee.age \
+        ? \cf4 `You're \cf2 $\{\cf0 employee.age\cf2 \}\cf4  years old.`\cf0 \
+        : \cf4 "There is no age limit to understand this example :)"\cf0 \
+    \cf2 \}\cf4 `\cf0 ;\
+\}\
+\
+console.log(greeting(\{ name: \cf4 "Satya"\cf0  \}));\
+\pard\pardeftab708\ri-618\sl285\partightenfactor0
+\cf3 //Hello Satya! There is no age limit to understand this example :)\cf0 \
+console.log(greeting(\{ name: \cf4 "Bill"\cf0 , age: \cf5 62\cf0  \}));\
+\cf3 //Hello Bill! You're 62 years old.\cf0 \
+\pard\pardeftab708\ri-618\sl280\partightenfactor0
+
+\f0\fs22 \cf0 \
+Autres d\'e9tails, un membre d\'92une interface peut \'eatre d\'e9clar\'e9 en lecture seule\'a0:\
+\
+\pard\pardeftab708\ri-618\sl285\partightenfactor0
+
+\f1\fs21 \cf2 interface\cf0  Person \{\
+    \cf2 readonly\cf0  name: string;\
+\}\
+\
+\cf2 const\cf0  person: Person = \{\
+    name: \cf4 "Bill"\cf0 \
+\};\
+person.name = \cf4 "Satya"\cf3 //Error\cf0 \
+\pard\pardeftab708\ri-618\sl280\partightenfactor0
+
+\f0\fs22 \cf0 \
+\
+\
+\pard\pardeftab708\ri-618\sl285\partightenfactor0
+
+\f1\fs21 \cf2 const\cf0  greeting = \cf2 function\cf0 (name: string): string \{\
+    \cf2 return\cf0  \cf4 `Hello \cf2 $\{\cf0  name \cf2 \}\cf4 !`\cf0 ;\
+\}\
+\
+console.log(greeting \cf2 instanceof\cf0  Object);\cf3 //true\cf0 \
+\pard\pardeftab708\ri-618\sl280\partightenfactor0
+
+\f0\fs22 \cf0 \
+\
+\
+\pard\pardeftab708\ri-618\sl285\partightenfactor0
+
+\f1\fs21 \cf2 interface\cf0  Greeting \{\
+    (name: string): string;\
+\}\
+\pard\pardeftab708\ri-618\sl280\partightenfactor0
+
+\f0\fs22 \cf0 \
+\
+\
+\pard\pardeftab708\ri-618\sl285\partightenfactor0
+
+\f1\fs21 \cf2 interface\cf0  Person \{\
+    name: string;\
+    isCeo: boolean;\
+\}\
+\
+\cf2 interface\cf0  Filter \{\
+    (person: Person): boolean\
+\}\
+\
+\pard\pardeftab708\ri-618\sl280\partightenfactor0
+
+\f0\fs22 \cf0 \
+\
+\pard\pardeftab708\ri-618\sl285\partightenfactor0
+
+\f1\fs21 \cf2 function\cf0  search(persons: Person[], filter: Filter): Person[] \{\
+    \cf2 const\cf0  filteredPersons: Person[] = [];\
+    persons.forEach(\cf2 function\cf0 (person) \{\
+        \cf2 if\cf0 (filter(person)) \{\
+            filteredPersons.push(person);\
+        \}\
+    \});\
+    \cf2 return\cf0  filteredPersons;\
+\}\
+\pard\pardeftab708\ri-618\sl280\partightenfactor0
+
+\f0\fs22 \cf0 \
+\
+\
+\pard\pardeftab708\ri-618\sl285\partightenfactor0
+
+\f1\fs21 \cf2 const\cf0  isNotCeo = \cf2 function\cf0 (person: Person): boolean \{\
+    \cf2 return\cf0  !person.isCeo;\
+\}\
+\
+\cf2 const\cf0  startWithC = \cf2 function\cf0 (person: Person): boolean \{\
+    \cf2 return\cf0  person.name.charAt(\cf5 0\cf0 ).toUpperCase() === \cf4 "C"\cf0 ;\
+\}\
+\
+\cf2 const\cf0  employees: Person[] = [\
+    \{ name: \cf4 "Satya"\cf0 , isCeo: \cf2 true\cf0  \},\
+    \{ name: \cf4 "Sylvain"\cf0 , isCeo: \cf2 false\cf0  \},\
+    \{ name: \cf4 "S\'e9bastien"\cf0 , isCeo: \cf2 false\cf0  \},\
+    \{ name: \cf4 "Christopher"\cf0 , isCeo: \cf2 false\cf0  \}\
+] \
+\
+\cf2 const\cf0  notCeoEmployees = search(employees, isNotCeo);\
+console.log(notCeoEmployees);\
+\pard\pardeftab708\ri-618\sl285\partightenfactor0
+\cf3 //[ \{ name: 'Sylvain', isCeo: false \},\cf0 \
+\cf3 //  \{ name: 'S\'e9bastien', isCeo: false \},\cf0 \
+\cf3 //  \{ name: 'Christopher', isCeo: false \} ]\cf0 \
+\
+\pard\pardeftab708\ri-618\sl285\partightenfactor0
+\cf2 const\cf0  nameStartWithC = search(employees, startWithC);\
+console.log(nameStartWithC); \
+\pard\pardeftab708\ri-618\sl285\partightenfactor0
+\cf3 //[ \{ name: 'Christopher', isCeo: false \} ]\cf0 \
+\pard\pardeftab708\ri-618\sl280\partightenfactor0
+
+\f0\fs22 \cf0 \
+\
+\
+\pard\pardeftab708\ri-618\sl285\partightenfactor0
+
+\f1\fs21 \cf2 const\cf0  notCeoEmployees = search(employees, (person) \cf2 =>\cf0  !person.isCeo);\
+console.log(notCeoEmployees);\
+\pard\pardeftab708\ri-618\sl285\partightenfactor0
+\cf3 //[ \{ name: 'Sylvain', isCeo: false \},\cf0 \
+\cf3 //  \{ name: 'S\'e9bastien', isCeo: false \},\cf0 \
+\cf3 //  \{ name: 'Christopher', isCeo: false \} ]\cf0 \
+\pard\pardeftab708\ri-618\sl280\partightenfactor0
+
+\f0\fs22 \cf0 \
+\
+\
+\pard\pardeftab708\ri-618\sl285\partightenfactor0
+
+\f1\fs21 \cf2 interface\cf0  Entity<T> \{\
+    id: T; \
+\}\
+\pard\pardeftab708\ri-618\sl280\partightenfactor0
+
+\f0\fs22 \cf0 \
+\
+\
+\pard\pardeftab708\ri-618\sl285\partightenfactor0
+
+\f1\fs21 \cf2 const\cf0  entity: Entity<number> = \{\
+    id: \cf5 1\cf0 \
+\};\
+entity.id = \cf4 "1"\cf0 ;\cf3 //Erreur\cf0 \
+\pard\pardeftab708\ri-618\sl280\partightenfactor0
+
+\f0\fs22 \cf0 \
+\
+\
+\pard\pardeftab708\ri-618\sl285\partightenfactor0
+
+\f1\fs21 \cf2 class\cf0  Person<T> \{\
+    id: T;\
+\
+    \cf2 constructor\cf0 (id: T) \{\
+        \cf2 this\cf0 .id = id;\
+    \}\
+\}\
+\pard\pardeftab708\ri-618\sl280\partightenfactor0
+
+\f0\fs22 \cf0 \
+\
+\pard\pardeftab708\ri-618\sl285\partightenfactor0
+
+\f1\fs21 \cf2 class\cf0  Person<T> \cf2 implements\cf0  Entity<T> \{\
+    id: T;\
+\
+    \cf2 constructor\cf0 (id: T) \{\
+        \cf2 this\cf0 .id = id;\
+    \}\
+\}\
+\
+\pard\pardeftab708\ri-618\sl280\partightenfactor0
+
+\f0\fs22 \cf0 \
+\
+\pard\pardeftab708\ri-618\sl285\partightenfactor0
+
+\f1\fs21 \cf2 class\cf0  Person<T> \cf2 implements\cf0  Entity<number> \{\
+    id: number;\
+\
+    \cf2 constructor\cf0 (id: number) \{\
+        \cf2 this\cf0 .id = id;\
+    \}\
+\}\
+\pard\pardeftab708\ri-618\sl280\partightenfactor0
+
+\f0\fs22 \cf0 \
+\pard\pardeftab708\ri-618\sl280\qj\partightenfactor0
+\cf0 \
+\
+\pard\pardeftab708\ri-618\sl285\partightenfactor0
+
+\f1\fs21 \cf2 class\cf0  Values \{\
+    add<T>(value: T): void \{\
+        \cf3 //Do something here\cf0 \
+    \}\
+\}\
+\
+\cf2 const\cf0  values = \cf2 new\cf0  Values();\
+values.add<number>(\cf5 1\cf0 );\
+values.add<string>(\cf4 "A value"\cf0 );\
+values.add(\cf2 true\cf0 );\cf3 // Type inference works!\cf0 \
+values.add<string>(\cf5 1\cf0 );\cf3 //Error\cf0 \
+\pard\pardeftab708\ri-618\sl280\partightenfactor0
+
+\f0\fs22 \cf0 \
+\
+ \
+\pard\pardeftab708\ri-618\sl285\partightenfactor0
+
+\f1\fs21 \cf2 interface\cf0  Person \{\
+    name: string;\
+\}\
+\
+\cf2 function\cf0  greeting<T \cf2 extends\cf0  Person>(person: T): string \{\
+    \cf2 return\cf0  \cf4 `Hello \cf2 $\{\cf0  person.name \cf2 \}\cf4  !`\cf0 ; \
+\}\
+\pard\pardeftab708\ri-618\sl280\partightenfactor0
+
+\f0\fs22 \cf0 \
+\
+\pard\pardeftab708\ri-618\sl285\partightenfactor0
+
+\f1\fs21 \cf2 interface\cf0  Person \{\
+    name: string;\
+\}\
+\
+\cf2 class\cf0  Employee \cf2 implements\cf0  Person \{\
+    company: string = \cf4 "Microsoft"\cf0 ;\
+    name: string = \cf4 ""\cf0 ;\
+\}\
+\
+\cf2 class\cf0  Factory<T> \{\
+    \cf2 private\cf0  \cf2 readonly\cf0  ctor: \cf2 new\cf0  () \cf2 =>\cf0  T\
+    \cf2 constructor\cf0 (ctor: \cf2 new\cf0  () \cf2 =>\cf0  T) \{\
+        \cf2 this\cf0 .ctor = ctor;\
+    \}\
+\
+    getInstance(): T \{\
+        \cf2 return\cf0  \cf2 new\cf0  this.ctor();\
+    \}\
+\}\
+\
+\cf2 const\cf0  personFactory = \cf2 new\cf0  Factory<Person>(Employee);\
+\
+\cf2 const\cf0  person = personFactory.getInstance();\
+person.name = \cf4 "Sylvain"\cf0 ;\
+console.log(person);\cf3 //Employee \{ company: 'Microsoft', name: 'Sylvain' \}\cf0 \
+\
+\pard\pardeftab708\ri-618\qj\partightenfactor0
+
+\f0\fs22 \cf0 \
+}
